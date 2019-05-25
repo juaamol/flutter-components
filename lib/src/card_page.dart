@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
@@ -15,6 +16,8 @@ class CardPage extends StatelessWidget {
 
   Widget _cardType1() {
     return Card(
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -44,7 +47,7 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardType2() {
-    return Card(
+    final card = Container(
       child: Column(children: <Widget>[
         FadeInImage(
           image: NetworkImage(
@@ -60,5 +63,14 @@ class CardPage extends StatelessWidget {
         )
       ]),
     );
+
+    return Card(
+        elevation: 10.0,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        child: ClipRRect(
+          child: card,
+          borderRadius: BorderRadius.circular(20.0),
+        ));
   }
 }
