@@ -23,13 +23,13 @@ class HomePage extends StatelessWidget {
         print('builder');
         print(snapshot.data);
         return ListView(
-          children: _listChildren(snapshot.data),
+          children: _listChildren(context: context, data: snapshot.data),
         );
       },
     );
   }
 
-  List<Widget> _listChildren(List<dynamic> data) {
+  List<Widget> _listChildren({BuildContext context, List<dynamic> data}) {
     return data
         .map((item) => Column(
               children: <Widget>[
@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
                   title: Text(item['text']),
                   leading: getIcon(item['icon']),
                   trailing: Icon(Icons.arrow_right, color: Colors.lightBlue),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, item['route']);
+                  },
                 ),
                 Divider(),
               ],
